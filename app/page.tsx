@@ -4,9 +4,16 @@ import { useState, useEffect } from "react";
 import { AdapterDateFns } from "@mui/x-date-pickers/AdapterDateFnsV3";
 import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider";
 import { DatePicker } from "@mui/x-date-pickers/DatePicker";
-import { Box, InputLabel, Stack, Typography } from "@mui/material";
+import { Box, CssBaseline, Stack, ThemeProvider, Typography, createTheme } from "@mui/material";
 import { format, isValid } from "date-fns";
 
+const darkTheme = createTheme({
+  palette: {
+    mode: "dark",
+    primary: {main: "#f5c2e7"},
+    text: {primary: "#cdd6f4"}
+  },
+});
 const calculateDate = (parent: Date, me: Date) =>
   new Date(Math.abs(me.getTime() - parent.getTime()) + me.getTime());
 
@@ -20,6 +27,8 @@ export default function Main() {
     }
   }, [parent, me]);
   return (
+        <ThemeProvider theme={darkTheme}>
+      <CssBaseline />
     <Box
       sx={{
         display: "flex",
@@ -37,12 +46,12 @@ export default function Main() {
           alignSelf: "center",
         }}
       >
-        <Typography variant="h4">Genuflection Day</Typography>
+        <Typography variant="h4" >Genuflection Day</Typography>
         <Typography
           variant="body2"
           p={4}
           textAlign="center"
-          color="text.secondary"
+            color="#a6adc8"
         >
           Calculate the date your parent is exactly twice your age. This would
           be where you are the age your parent was when they had you!
@@ -66,7 +75,7 @@ export default function Main() {
               variant="h6"
               sx={{
                 marginTop: 0,
-                border: "1px solid gray",
+                border: "1px solid #f5e0dc",
                 padding: 1.5,
                 borderRadius: 2,
               }}
@@ -76,6 +85,6 @@ export default function Main() {
           </Stack>
         )}
       </Stack>
-    </Box>
+    </Box>}</ThemeProvider>
   );
 }

@@ -1,7 +1,4 @@
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
-
-const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
   title: "Genuflection Day",
@@ -14,8 +11,17 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
-      <body className={inter.className}>{children}</body>
+    <html lang="en" style={{ height: "100vh", width: "100vw" }}>
+      <body
+        style={{
+          height: "100%",
+          width: "100%",
+          margin: 0,
+          backgroundColor: "#1e1e2e",
+        }}
+      >
+        {children}
+      </body>
     </html>
   );
 }
