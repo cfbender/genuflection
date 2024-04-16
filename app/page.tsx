@@ -5,7 +5,7 @@ import { AdapterDateFns } from "@mui/x-date-pickers/AdapterDateFnsV3";
 import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider";
 import { DatePicker } from "@mui/x-date-pickers/DatePicker";
 import { Box, InputLabel, Stack, Typography } from "@mui/material";
-import { format } from "date-fns";
+import { format, isValid } from "date-fns";
 
 const calculateDate = (parent: Date, me: Date) =>
   new Date(Math.abs(me.getTime() - parent.getTime()) + me.getTime());
@@ -59,7 +59,7 @@ export default function Main() {
             label="Child's birthdate"
           />
         </LocalizationProvider>
-        {result && (
+        {isValid(result) && result && (
           <Stack alignItems="center">
             <Typography variant="h6">Result:</Typography>
             <Typography
