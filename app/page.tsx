@@ -63,11 +63,13 @@ export default function Main() {
               value={parent}
               onChange={(v) => setParent(v)}
               label="Parent's birthdate"
+              sx={{ width: "75%" }}
             />
             <DatePicker
               value={me}
               onChange={(v) => setMe(v)}
               label="Child's birthdate"
+              sx={{ width: "75%" }}
             />
           </LocalizationProvider>
           {isValid(result) && result && (
