@@ -5,6 +5,7 @@ import { AdapterDateFns } from "@mui/x-date-pickers/AdapterDateFnsV3";
 import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider";
 import { DatePicker } from "@mui/x-date-pickers/DatePicker";
 import { Box, InputLabel, Stack, Typography } from "@mui/material";
+import { format } from "date-fns";
 
 const calculateDate = (parent: Date, me: Date) =>
   new Date(Math.abs(me.getTime() - parent.getTime()) + me.getTime());
@@ -59,12 +60,20 @@ export default function Main() {
           />
         </LocalizationProvider>
         {result && (
-          <>
+          <Stack alignItems="center">
             <Typography variant="h6">Result:</Typography>
-            <Typography variant="body2">
-              {result.toLocaleDateString()}
+            <Typography
+              variant="h6"
+              sx={{
+                marginTop: 0,
+                border: "1px solid gray",
+                padding: 1.5,
+                borderRadius: 2,
+              }}
+            >
+              {format(result, "MMMM do yyyy")}
             </Typography>
-          </>
+          </Stack>
         )}
       </Stack>
     </Box>
