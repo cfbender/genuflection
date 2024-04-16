@@ -53,7 +53,9 @@ export default function Main() {
             alignSelf: "center",
           }}
         >
-          <Typography variant="h4">Genuflection Day</Typography>
+          <Typography variant="h4" textAlign="center">
+            Genuflection Day
+          </Typography>
           <Typography variant="body2" p={4} textAlign="center" color="#a6adc8">
             Calculate the date your parent is exactly twice your age. This would
             be where you are the age your parent was when they had you!
