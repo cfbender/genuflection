@@ -58,8 +58,14 @@ export default function Main() {
             label="Child's birthdate"
           />
         </LocalizationProvider>
-        <Typography variant="h6">Result:</Typography>
-        {result?.toLocaleDateString()}
+        {result && (
+          <>
+            <Typography variant="h6">Result:</Typography>
+            <Typography variant="body2">
+              {result.toLocaleDateString()}
+            </Typography>
+          </>
+        )}
       </Stack>
     </Box>
   );
