@@ -4,14 +4,21 @@ import { useState, useEffect } from "react";
 import { AdapterDateFns } from "@mui/x-date-pickers/AdapterDateFnsV3";
 import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider";
 import { DatePicker } from "@mui/x-date-pickers/DatePicker";
-import { Box, CssBaseline, Stack, ThemeProvider, Typography, createTheme } from "@mui/material";
+import {
+  Box,
+  CssBaseline,
+  Stack,
+  ThemeProvider,
+  Typography,
+  createTheme,
+} from "@mui/material";
 import { format, isValid } from "date-fns";
 
 const darkTheme = createTheme({
   palette: {
     mode: "dark",
-    primary: {main: "#f5c2e7"},
-    text: {primary: "#cdd6f4"}
+    primary: { main: "#f5c2e7" },
+    text: { primary: "#cdd6f4" },
   },
 });
 const calculateDate = (parent: Date, me: Date) =>
@@ -27,64 +34,60 @@ export default function Main() {
     }
   }, [parent, me]);
   return (
-        <ThemeProvider theme={darkTheme}>
+    <ThemeProvider theme={darkTheme}>
       <CssBaseline />
-    <Box
-      sx={{
-        display: "flex",
-        justifyContent: "center",
-        alignItems: "center",
-        mt: 6,
-      }}
-    >
-      <Stack
-        spacing={2}
+      <Box
         sx={{
-          maxWidth: 600,
+          display: "flex",
           justifyContent: "center",
           alignItems: "center",
-          alignSelf: "center",
+          mt: 6,
         }}
       >
-        <Typography variant="h4" >Genuflection Day</Typography>
-        <Typography
-          variant="body2"
-          p={4}
-          textAlign="center"
-            color="#a6adc8"
+        <Stack
+          spacing={2}
+          sx={{
+            maxWidth: 600,
+            justifyContent: "center",
+            alignItems: "center",
+            alignSelf: "center",
+          }}
         >
-          Calculate the date your parent is exactly twice your age. This would
-          be where you are the age your parent was when they had you!
-        </Typography>
-        <LocalizationProvider dateAdapter={AdapterDateFns}>
-          <DatePicker
-            value={parent}
-            onChange={(v) => setParent(v)}
-            label="Parent's birthdate"
-          />
-          <DatePicker
-            value={me}
-            onChange={(v) => setMe(v)}
-            label="Child's birthdate"
-          />
-        </LocalizationProvider>
-        {isValid(result) && result && (
-          <Stack alignItems="center">
-            <Typography variant="h6">Result:</Typography>
-            <Typography
-              variant="h6"
-              sx={{
-                marginTop: 0,
-                border: "1px solid #f5e0dc",
-                padding: 1.5,
-                borderRadius: 2,
-              }}
-            >
-              {format(result, "MMMM do yyyy")}
-            </Typography>
-          </Stack>
-        )}
-      </Stack>
-    </Box>}</ThemeProvider>
+          <Typography variant="h4">Genuflection Day</Typography>
+          <Typography variant="body2" p={4} textAlign="center" color="#a6adc8">
+            Calculate the date your parent is exactly twice your age. This would
+            be where you are the age your parent was when they had you!
+          </Typography>
+          <LocalizationProvider dateAdapter={AdapterDateFns}>
+            <DatePicker
+              value={parent}
+              onChange={(v) => setParent(v)}
+              label="Parent's birthdate"
+            />
+            <DatePicker
+              value={me}
+              onChange={(v) => setMe(v)}
+              label="Child's birthdate"
+            />
+          </LocalizationProvider>
+          {isValid(result) && result && (
+            <Stack alignItems="center">
+              <Typography variant="h6">Result:</Typography>
+              <Typography
+                variant="h6"
+                sx={{
+                  marginTop: 0,
+                  border: "1px solid #f5e0dc",
+                  padding: 1.5,
+                  borderRadius: 2,
+                }}
+              >
+                {format(result, "MMMM do yyyy")}
+              </Typography>
+            </Stack>
+          )}
+        </Stack>
+      </Box>
+    </ThemeProvider>
   );
 }
